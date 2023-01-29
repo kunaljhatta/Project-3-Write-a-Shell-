@@ -3,17 +3,18 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#define MAX_PATH_LEN 200
 
 int main (){
   char input[2048];
   char *token;
   char *argv[128];
-  char path[200];
+  char path[MAX_PATH_LEN];
   int i;
   
   while(1){
     fflush(stdout);
-    getcwd(path, 200);
+    getcwd(path, MAX_PATH_LEN);
     printf("~ %s $ ", path);
     fgets(input, sizeof input, stdin);
     i=0;
